@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Green Pousse</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_menu_utilisateur_gp">Menu_utilisateurGP</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Connexion -->
+    <string name="bouton_login">Se connecter</string>
+    <string name="textView_inscription">Pas encore de compte ? Inscris-toi !</string>
+    <string name="textView_infoInscription">Une fois ton compte créé, reviens ici pour te connecter !</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_mdp">Mot de passe</string>
+
+    <string name="toast_mdpErreur">Mot de passe invalide</string>
+    <string name="toast_emailErreur">Adresse email invalide</string>
+    <string name="toast_emailVide">Veuillez entrer votre adresse email</string>
+    <string name="toast_mdpVide">Veuillez entrer votre mot de passe</string>
+    <string name="snackbar_pbCoetc">Oups ! Vérifiez votre connexion internet</string>
+
+    <string name="login_emailErreur">Adresse email invalide</string>
+    <string name="login_mdpErreur">Mot de passe doit contenir >5 caractères</string>
+
+    <!-- Menu -->
+    <string name="menu_compte">Mon compte</string>
+    <string name="menu_bac">Mon bac</string>
+    <string name="menu_conseil">Conseils</string>
+    <string name="menu_blog">Blog</string>
+    <string name="menu_aide">Aide</string>
+    <string name="menu_contact">Contact</string>
+    <string name="menu_logout">Déconnexion</string>
+
+    <!-- Bac -->
+    <string name="bac_temp">Température :</string>
+    <string name="note_temp">Note température</string>
+    <string name="bac_hum">Humidité :</string>
+    <string name="note_hum">Note humidité</string>
+    <string name="bac_ph">pH :</string>
+    <string name="note_ph">Note pH</string>
+    <string name="erreur_bac">Oups ! Tes vers de terre ont l\'air injoignables</string>
+
+    <!-- Conseils -->
+    <string name="cons_tempTitre">Température :</string>
+    <string name="cons_temp">Conseil</string>
+    <string name="cons_humTitre">Humidité :</string>
+    <string name="cons_hum">Conseil</string>
+    <string name="cons_phTitre">pH :</string>
+    <string name="cons_ph">Conseil</string>
+
+    <!-- Mon Compte -->
+    <string name="compte_editTextoldMdp">Ancien mot de passe</string>
+    <string name="compte_editTextNewMdp">Nouveau mot de passe</string>
+    <string name="compte_editTextNewMdp2">Confirmation nouveau mot de passe</string>
+    <string name="bouton_compte">Valider</string>
+    <string name="textView_notif">Notifications</string>
+    <string name="textView_changerEmail">Changer d\'adresse email</string>
+    <string name="textView_changerMdp">Changer de mot de passe</string>
+
+    <string name="erreur_fonctionalite">Oups ! Cette fonctionnalité n\'est pas encore disponible</string>
+
+    <!-- Aide -->
+    <string name="aide_nomForm">Nom</string>
+    <string name="aide_emailForm">Adresse mail</string>
+    <string name="aide_sujetForm">Sujet</string>
+    <string name="aide_messageForm">Message</string>
+    <string name="aide_boutonForm">Envoyer</string>
+    <string name="aide_titre">Un problème ? Envoie-nous ta question !</string>
+
+    <!-- Contact -->
+    <string name="contact_titre">Work in progress</string>
+
+</resources>

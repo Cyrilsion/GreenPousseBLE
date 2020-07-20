@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_bac">
+
+    <fragment
+        android:id="@+id/nav_recherche"
+        android:name="com.example.referencement.Fragments.RechercheFragment"
+        android:label="Recherche"
+        tools:layout="@layout/fragment_recherche">
+        <action
+            android:id="@+id/rech_to_details"
+            app:destination="@+id/nav_details"/>
+        <action
+            android:id="@+id/rech_to_suggestion"
+            app:destination="@+id/nav_suggestion"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.example.referencement.Fragments.DetailsFragment"
+        android:label="Détails"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/details_to_suggestion"
+            app:destination="@+id/nav_suggestion" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_suggestion"
+        android:name="com.example.referencement.Fragments.SuggestionFragment"
+        android:label="Suggestion"
+        tools:layout="@layout/fragment_suggestion" >
+        <action
+            android:id="@+id/suggestion_to_rech"
+            app:destination="@+id/nav_recherche" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_bac"
+        android:name="com.example.referencement.Fragments.BacFragment"
+        android:label="@string/menu_bac"
+        tools:layout="@layout/fragment_bac" />
+
+    <fragment
+        android:id="@+id/nav_compte"
+        android:name="com.example.greenpousse.ui.moncompte.MonCompteFragment"
+        android:label="@string/menu_compte"
+        tools:layout="@layout/fragment_moncompte" />
+
+    <fragment
+        android:id="@+id/nav_conseil"
+        android:name="com.example.greenpousse.ui.conseils.ConseilsFragment"
+        android:label="@string/menu_conseil"
+        tools:layout="@layout/fragment_conseils" />
+
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="com.example.greenpousse.ui.tools.BlogFragment"
+        android:label="@string/menu_blog"
+        tools:layout="@layout/fragment_blog" />
+
+    <fragment
+        android:id="@+id/nav_aide"
+        android:name="com.example.greenpousse.ui.aide.AideFragment"
+        android:label="@string/menu_aide"
+        tools:layout="@layout/fragment_aide" />
+
+    <fragment
+        android:id="@+id/nav_contact"
+        android:name="com.example.greenpousse.ui.contact.ContactFragment"
+        android:label="@string/menu_contact"
+        tools:layout="@layout/fragment_contact" />
+</navigation>

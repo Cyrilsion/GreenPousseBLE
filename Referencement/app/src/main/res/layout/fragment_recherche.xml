@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+        <ProgressBar
+            android:id="@+id/progressBarRecherche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+        <EditText
+            android:contentDescription="search"
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/searchButton"
+            android:layout_marginRight="5dp"
+            android:inputType="textFilter"
+            android:imeOptions="actionSearch"
+            android:background="@drawable/normalbackground"/>
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:src="@drawable/search"
+            android:background="@android:color/transparent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+
+        <ListView
+            android:id="@+id/resultsList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/searchBar"
+            android:layout_above="@+id/suggestionButton"
+            android:layout_marginTop="16dp"
+            android:divider="#5e5e5f"
+            android:dividerHeight="1dp"
+            android:drawSelectorOnTop="true"/>
+        
+        <Button
+            android:id="@+id/suggestionButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true"
+            android:text="Vous ne trouvez pas un produit? Envoyez nous votre suggestion en cliquant ici."
+            android:textSize="12dp"
+            android:background="@drawable/normalbackground"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

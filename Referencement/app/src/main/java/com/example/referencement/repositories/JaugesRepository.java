@@ -1,8 +1,10 @@
-package com.example.referencement.networking;
+package com.example.referencement.repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.referencement.models.JaugesResponse;
+import com.example.referencement.networking.GreenPousseAPIs;
+import com.example.referencement.networking.RetrofitService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

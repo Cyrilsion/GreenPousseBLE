@@ -6,6 +6,17 @@
     app:startDestination="@id/nav_bac">
 
     <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.referencement.Fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/login_to_bac"
+            app:destination="@+id/nav_bac"/>
+
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_recherche"
         android:name="com.example.referencement.Fragments.RechercheFragment"
         android:label="Recherche"

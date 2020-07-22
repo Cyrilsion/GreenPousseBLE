@@ -13,17 +13,13 @@
             android:name=".Menu_utilisateurGP"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity
-            android:name=".login.LoginActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".login.InscriptionActivity">
         </activity>

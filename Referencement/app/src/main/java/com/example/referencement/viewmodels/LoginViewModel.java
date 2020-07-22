@@ -12,46 +12,37 @@ import com.example.referencement.login.InscriptionActivity;
 import com.example.referencement.login.LoggedInUserView;
 import com.example.referencement.login.LoginFormState;
 import com.example.referencement.login.LoginResult;
+import com.example.referencement.models.LoginModel;
 import com.example.referencement.repositories.LoginRepository;
 
 public class LoginViewModel extends ViewModel {
 
-    private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
-    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
+    //private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
+    private MutableLiveData<LoginModel> loginModel = new MutableLiveData<>();
+    //private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
 
-    public LoginViewModel(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    public void init() {
+        if(loginModel == null) return;
+        loginRepository = LoginRepository.getInstance();
+        loginModel = loginRepository.getLoginModel();
     }
 
-    public LiveData<LoginFormState> getLoginFormState() {
-        return loginFormState;
-    }
 
-    public LiveData<LoginResult> getLoginResult() {
-        return loginResult;
-    }
+    public LiveData<LoginModel> getLoginResult() { return loginModel; }
+
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<InscriptionActivity.LoggedInUser> result = loginRepository.login(username, password);
+        loginRepository.login(username, password);
+        /*Result<InscriptionActivity.LoggedInUser> result = loginRepository.login(username, password);
 
         if (result instanceof Result.Success) {
             InscriptionActivity.LoggedInUser data = ((Result.Success<InscriptionActivity.LoggedInUser>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
-    }
-
-    public void loginDataChanged(String username, String password) {
-        if (!isUserNameValid(username)) {
-            loginFormState.setValue(new LoginFormState(R.string.login_emailErreur, null));
-        } else if (!isPasswordValid(password)) {
-            loginFormState.setValue(new LoginFormState(null, R.string.login_mdpErreur));
-        } else {
-            loginFormState.setValue(new LoginFormState(true));
-        }
+        }*/
     }
 
     // A placeholder username validation check

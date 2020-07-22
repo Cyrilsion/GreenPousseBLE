@@ -18,6 +18,7 @@ import com.example.referencement.viewmodels.RechercheViewModel;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 public class SuggestionFragment extends Fragment {
 
@@ -36,29 +37,10 @@ public class SuggestionFragment extends Fragment {
 
     private RechercheViewModel rechercheViewModel;
 
-
-    // Declare callback
-    private OnButtonClickedListener mCallback;
-
-    // Declare our interface that will be implemented by any container activity
-    public interface OnButtonClickedListener {
-        void onSuggestionButtonClicked(View view);
-    }
-
-    // --------------
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_suggestion, container, false);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        // Call the method that creating callback after being attached to parent activity
-        this.createCallbackToParentActivity();
     }
 
     @Override
@@ -155,25 +137,11 @@ public class SuggestionFragment extends Fragment {
             public void onClick(View view) {
                 if(mailChecked && messageChecked) {
                     rechercheViewModel.sendMail(nomDechet.getText().toString(), adresse.getText().toString(), message.getText().toString());
-                    mCallback.onSuggestionButtonClicked(view);
+                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.suggestion_to_rech);
                 }
             }
         });
 
-    }
-
-    // --------------
-    // FRAGMENT SUPPORT
-    // --------------
-
-    // Create callback to parent activity
-    private void createCallbackToParentActivity(){
-        try {
-            //Parent activity will automatically subscribe to callback
-            mCallback = (OnButtonClickedListener) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
-        }
     }
 
 }

@@ -134,7 +134,6 @@ public class RechercheRepository {
 
         private JSONObject resultJson;
         private int position;
-        private RechercheFragment.OnButtonClickedListener mCallback;
 
         public Details(int position) {
             this.position = position;

@@ -1,16 +1,15 @@
 package com.example.referencement.models;
 
-/**
- * Data class that captures user information for logged in users retrieved from LoginRepository
- */
-public class LoggedInUser {
+public class LoginModel {
 
     private String userId;
     private String displayName;
+    private boolean authentication;
 
-    public LoggedInUser(String userId, String displayName) {
+    public LoginModel(String userId, String displayName) {
         this.userId = userId;
         this.displayName = displayName;
+        this.authentication = false;
     }
 
     public String getUserId() {
@@ -19,4 +18,5 @@ public class LoggedInUser {
     public String getDisplayName() {
         return displayName;
     }
+    public void login() { this.authentication = true; }
 }

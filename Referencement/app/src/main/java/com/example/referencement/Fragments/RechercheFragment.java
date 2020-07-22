@@ -26,6 +26,7 @@ import java.util.List;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 public class RechercheFragment extends Fragment {
 
@@ -38,31 +39,12 @@ public class RechercheFragment extends Fragment {
     private ProgressBar progressBar;
 
 
-    // Declare callback
-    private OnButtonClickedListener mCallback;
-
-    // Declare our interface that will be implemented by any container activity
-    public interface OnButtonClickedListener {
-        void onRechercheButtonClicked(View view);
-        void onItemClicked(View view);
-    }
-
-    // --------------
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_recherche, container, false);
 
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        // Call the method that creating callback after being attached to parent activity
-        this.createCallbackToParentActivity();
     }
 
     @Override
@@ -80,7 +62,7 @@ public class RechercheFragment extends Fragment {
         suggestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCallback.onRechercheButtonClicked(view);
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.rech_to_suggestion);
             }
         });
         ///on click pour + de details -> show fragment details
@@ -88,7 +70,7 @@ public class RechercheFragment extends Fragment {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
                 //si pas de détails on lance la requete
                 rechercheViewModel.getDetails(i);
-                mCallback.onItemClicked(view);
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.rech_to_details);
             }
         });
 
@@ -137,20 +119,6 @@ public class RechercheFragment extends Fragment {
                 return false;
             }
         });
-    }
-
-    // --------------
-    // FRAGMENT SUPPORT
-    // --------------
-
-    // Create callback to parent activity
-    private void createCallbackToParentActivity(){
-        try {
-            //Parent activity will automatically subscribe to callback
-            mCallback = (OnButtonClickedListener) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
-        }
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.referencement.viewmodels;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,12 +8,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.referencement.models.ConseilsResponse;
-import com.example.referencement.networking.ConseilsRepository;
-import com.example.referencement.networking.JaugesRepository;
+import com.example.referencement.repositories.ConseilsRepository;
+import com.example.referencement.repositories.JaugesRepository;
 import com.example.referencement.models.JaugesResponse;
 import com.example.referencement.SaveSharedPreferences;
-
-import java.util.List;
 
 public class BacConseilSharedViewModel extends AndroidViewModel {
 

@@ -17,6 +17,8 @@ public class InscriptionActivity extends AppCompatActivity {
     private WebView webView;
     private Toolbar toolbar;
 
+    // TODO : turn this into a fragment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

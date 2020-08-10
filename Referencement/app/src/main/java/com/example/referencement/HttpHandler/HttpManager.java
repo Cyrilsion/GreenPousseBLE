@@ -3,6 +3,7 @@ package com.example.referencement.HttpHandler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -22,6 +23,14 @@ public class HttpManager {
             URL url = new URL(uri);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod(requestPackage.getMethod());
+
+            if (requestPackage.getMethod().equals("POST")) {
+                con.setDoOutput(true);
+                OutputStreamWriter writer =
+                        new OutputStreamWriter(con.getOutputStream());
+                writer.write(requestPackage.getEncodedParams());
+                writer.flush();
+            }
 
             StringBuilder sb = new StringBuilder();
             reader = new BufferedReader(new InputStreamReader(con.getInputStream()));

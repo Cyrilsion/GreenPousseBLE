@@ -1,45 +1,42 @@
-package com.example.referencement.login;
+package com.example.referencement.Fragments;
 
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.referencement.R;
 
-public class InscriptionActivity extends AppCompatActivity {
+public class InscriptionFragment extends Fragment {
 
     private WebView webView;
-    private Toolbar toolbar;
-
-    // TODO : turn this into a fragment
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inscription);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_inscription, container, false);
 
-        webView = findViewById(R.id.inscription);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        webView = getActivity().findViewById(R.id.inscription);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://eden.imt-lille-douai.fr/~ema.bouvier/Subscribe.php");
+        webView.loadUrl("http://greenpousse.fr/Subscribe.php");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
     }
 
-    public void onBackPressed(){
-        if(webView.canGoBack()){
-            webView.goBack();
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     // pour que l'appli ne crash pas quand on tourne l'écran
     @Override

@@ -18,5 +18,6 @@ public class LoginModel {
     public String getDisplayName() {
         return displayName;
     }
+    public boolean isAuthenticated() { return authentication; }
     public void login() { this.authentication = true; }
 }

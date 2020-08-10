@@ -10,10 +10,13 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import static com.example.referencement.Fragments.LoginFragment.LOGIN_SUCCESSFUL;
 
 public class Menu_utilisateurGP extends AppCompatActivity { //implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,21 +56,16 @@ public class Menu_utilisateurGP extends AppCompatActivity { //implements Navigat
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        // TODO : deconnexion
         // listener UNIQUEMENT sur item deconnexion
         // renvoi vers page login + deconnecte l'utilisateur (supprime log des Shared Preferences)
-        /*navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                // supprime le nom d'utilisateur des SharedPreferences
-                SaveSharedPreferences.clearUserName(getApplicationContext());
-                // retourne sur login activity
-                Intent monintent = new Intent(Menu_utilisateurGP.this, LoginActivity.class); // si back button on retourne dans appli
-                // pour qu'on ne puisse pas retourner en arriere une fois deconnecte
-                monintent.setFlags(monintent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(monintent);
-                return true;
-            }
-        });*/
+        navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {
+            // supprime le nom d'utilisateur des SharedPreferences
+            SaveSharedPreferences.clearUserName(getApplicationContext());
+            // retourne sur login activity
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.nav_login);
+            return true;
+        });
     }
 
     @Override

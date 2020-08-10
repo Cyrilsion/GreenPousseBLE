@@ -13,7 +13,17 @@
         <action
             android:id="@+id/login_to_bac"
             app:destination="@+id/nav_bac"/>
+        <action
+            android:id="@+id/login_to_incription"
+            app:destination="@+id/nav_inscription"/>
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inscription"
+        android:name="com.example.referencement.Fragments.InscriptionFragment"
+        android:label="Inscription"
+        tools:layout="@layout/fragment_inscription">
     </fragment>
 
     <fragment
@@ -54,34 +64,4 @@
         android:name="com.example.referencement.Fragments.BacFragment"
         android:label="@string/menu_bac"
         tools:layout="@layout/fragment_bac" />
-
-    <fragment
-        android:id="@+id/nav_compte"
-        android:name="com.example.greenpousse.ui.moncompte.MonCompteFragment"
-        android:label="@string/menu_compte"
-        tools:layout="@layout/fragment_moncompte" />
-
-    <fragment
-        android:id="@+id/nav_conseil"
-        android:name="com.example.greenpousse.ui.conseils.ConseilsFragment"
-        android:label="@string/menu_conseil"
-        tools:layout="@layout/fragment_conseils" />
-
-    <fragment
-        android:id="@+id/nav_blog"
-        android:name="com.example.greenpousse.ui.tools.BlogFragment"
-        android:label="@string/menu_blog"
-        tools:layout="@layout/fragment_blog" />
-
-    <fragment
-        android:id="@+id/nav_aide"
-        android:name="com.example.greenpousse.ui.aide.AideFragment"
-        android:label="@string/menu_aide"
-        tools:layout="@layout/fragment_aide" />
-
-    <fragment
-        android:id="@+id/nav_contact"
-        android:name="com.example.greenpousse.ui.contact.ContactFragment"
-        android:label="@string/menu_contact"
-        tools:layout="@layout/fragment_contact" />
 </navigation>

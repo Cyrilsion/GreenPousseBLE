@@ -5,13 +5,17 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.referencement.models.LoginModel;
+import com.example.referencement.viewmodels.LoginViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -21,12 +25,6 @@ import static com.example.referencement.Fragments.LoginFragment.LOGIN_SUCCESSFUL
 public class Menu_utilisateurGP extends AppCompatActivity { //implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-
-   @Override
-    public void onBackPressed() {
-        NavigationUI.navigateUp(Navigation.findNavController(this, R.id.nav_host_fragment), mAppBarConfiguration);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +41,14 @@ public class Menu_utilisateurGP extends AppCompatActivity { //implements Navigat
         }
         });
          */
+
+        //TODO : -Onglet conseils + API pr récup
+        // -Onglet Mon compte
+        // -Onglet Blog
+        // -Onglet aide
+        // -Onglet contact
+        // -Checker sécurité
+        // -checker perfs
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -56,14 +62,18 @@ public class Menu_utilisateurGP extends AppCompatActivity { //implements Navigat
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // TODO : deconnexion
         // listener UNIQUEMENT sur item deconnexion
         // renvoi vers page login + deconnecte l'utilisateur (supprime log des Shared Preferences)
         navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {
             // supprime le nom d'utilisateur des SharedPreferences
             SaveSharedPreferences.clearUserName(getApplicationContext());
+            // on indique la deco et on retourne sur la page d'accueil
+            LoginViewModel loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+            loginViewModel.init();
+            loginViewModel.getLoginResult().getValue().logout();
             // retourne sur login activity
-            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.nav_login);
+            navController.navigate(R.id.nav_bac);
+
             return true;
         });
     }

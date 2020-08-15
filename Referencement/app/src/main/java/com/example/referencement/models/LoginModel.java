@@ -5,11 +5,14 @@ public class LoginModel {
     private String userId;
     private String displayName;
     private boolean authentication;
+    private Integer humidite;
+    private Integer temperature;
+    private Integer ph;
+    private int error;
 
-    public LoginModel(String userId, String displayName) {
-        this.userId = userId;
-        this.displayName = displayName;
+    public LoginModel() {
         this.authentication = false;
+        this.error = 0;
     }
 
     public String getUserId() {
@@ -19,5 +22,29 @@ public class LoginModel {
         return displayName;
     }
     public boolean isAuthenticated() { return authentication; }
-    public void login() { this.authentication = true; }
+    public void login(String userId, String displayName) {
+        this.userId = userId;
+        this.displayName = displayName;
+        this.authentication = true;
+        this.error = 0;
+    /// TODO : assigner les valeurs des capteurs
+        this.humidite = 10;
+        this.temperature = 20;
+        this.ph = 7;
+    }
+    public void logout() {
+        this.authentication = false;
+    }
+
+    public int getHumidite() {
+        return humidite;
+    }
+    public int getPh() {
+        return ph;
+    }
+    public int getTemperature() {
+        return this.temperature;
+    }
+    public int getError() { return this.error; }
+    public void setError(int error) { this.error = error;}
 }

@@ -6,13 +6,27 @@
     app:startDestination="@id/nav_bac">
 
     <fragment
+        android:id="@+id/nav_bac"
+        android:name="com.example.referencement.Fragments.BacFragment"
+        android:label="@string/menu_bac"
+        tools:layout="@layout/fragment_bac">
+        <action
+            android:id="@+id/bac_to_login"
+            app:destination="@+id/nav_login"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_login"
         android:name="com.example.referencement.Fragments.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/login_to_bac"
-            app:destination="@+id/nav_bac"/>
+            app:destination="@+id/nav_bac"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/login_to_incription"
             app:destination="@+id/nav_inscription"/>
@@ -59,9 +73,6 @@
             app:destination="@+id/nav_recherche" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_bac"
-        android:name="com.example.referencement.Fragments.BacFragment"
-        android:label="@string/menu_bac"
-        tools:layout="@layout/fragment_bac" />
+
+
 </navigation>

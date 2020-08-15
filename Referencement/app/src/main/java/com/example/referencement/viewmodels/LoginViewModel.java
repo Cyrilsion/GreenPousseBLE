@@ -11,6 +11,7 @@ import com.example.referencement.repositories.LoginRepository;
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginModel> loginModel = new MutableLiveData<>();
+    private LoginModel login;
     private LoginRepository loginRepository;
 
     public void init() {
@@ -21,18 +22,23 @@ public class LoginViewModel extends ViewModel {
 
     public LiveData<LoginModel> getLoginResult() { return loginModel; }
 
-    public void login(String username, String password) {
-        loginRepository.login(username, password);
+    public void login(String username, String password, boolean knonw) {
+        if(knonw) {
+            login = loginModel.getValue();
+            login.login(username, password);
+            loginModel.setValue(login);
+        }
+        //si pas connu on va check la base de données
+        else loginRepository.login(username, password);
+
     }
 
     public void logout() {
-        loginRepository.logout();
+        loginModel.getValue().logout();
     }
 
     public int getError() {
-        if (loginModel.getValue().getUserId().equalsIgnoreCase("Adresse email invalide")) return R.string.toast_emailErreur;
-        else if (loginModel.getValue().getUserId().equalsIgnoreCase("Mot de passe invalide")) return R.string.toast_mdpErreur;
-        else return R.string.snackbar_pbCoetc;
+        return loginModel.getValue().getError();
     }
 
 }

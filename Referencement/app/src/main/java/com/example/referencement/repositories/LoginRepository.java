@@ -11,6 +11,7 @@ import com.example.referencement.HttpHandler.HttpManager;
 import com.example.referencement.HttpHandler.RequestPackage;
 
 import com.example.referencement.Fragments.InscriptionFragment;
+import com.example.referencement.R;
 import com.example.referencement.models.LoginModel;
 
 
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 public class LoginRepository {
 
     private static volatile LoginRepository instance;
-    private LoginModel login = null;
+    private LoginModel login;
     private MutableLiveData<LoginModel> loginModel = new MutableLiveData<>();
 
     // If user credentials will be cached in local storage, it is recommended it be encrypted
@@ -40,14 +41,16 @@ public class LoginRepository {
     }
 
     public MutableLiveData<LoginModel> getLoginModel() {
-        loginModel.setValue(login);
+        if(login == null) {
+            login = new LoginModel();
+            loginModel.setValue(login);
+        }
         return loginModel;
     }
 
 
     public void login(String username, String password) {
         // handle login
-
         Authentication auth = new Authentication();
         RequestPackage requestPackage = new RequestPackage();
         requestPackage.setMethod("POST");
@@ -56,10 +59,6 @@ public class LoginRepository {
         requestPackage.setParam("PASSWORD", password);
         auth.execute(requestPackage);
 
-    }
-
-    public void logout() {
-        loginModel.setValue(null);
     }
 
 
@@ -76,31 +75,36 @@ public class LoginRepository {
         protected void onPostExecute(String result) {
             String idcompte;
             String prenom;
-            try {
-                JSONObject jsonObject = new JSONObject(result);
-                idcompte = jsonObject.getString("ID_COMPTE");
-                prenom = jsonObject.getString("PRENOM");
-                // si la premiere chaine (ID_COMPTE) est bien un identifiant de compte (un nombre)
-                if (idcompte.matches("[0-9]+")){
-                    login = new LoginModel(idcompte, prenom);
-                    login.login();
-                    loginModel.setValue(login);
-                }
-                // sinon on affiche des messages d'erreur et on vide la zone de texte qui a une erreur
-                else if (idcompte.equalsIgnoreCase("Adresse email invalide")){
-                    login = new LoginModel(idcompte, prenom);
-                    loginModel.setValue(login);
+            LoginModel login;
+            login = loginModel.getValue();
+            if(result != null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    idcompte = jsonObject.getString("ID_COMPTE");
+                    prenom = jsonObject.getString("PRENOM");
 
-                }
-                else if (idcompte.equalsIgnoreCase("Mot de passe invalide")){
-                    login = new LoginModel(idcompte, prenom);
+                    // si la premiere chaine (ID_COMPTE) est bien un identifiant de compte (un nombre)
+                    if (idcompte.matches("[0-9]+")){
+                        login.login(idcompte, prenom);
+                    }
+                    // sinon on affiche des messages d'erreur et on vide la zone de texte qui a une erreur
+                    else if (idcompte.equalsIgnoreCase("Adresse email invalide")){
+                        login.setError(R.string.toast_emailErreur);
+                    }
+                    else if (idcompte.equalsIgnoreCase("Mot de passe invalide")){
+                        login.setError(R.string.toast_mdpErreur);
+                    }
                     loginModel.setValue(login);
-
+                } catch (JSONException e) {
+                    login.setError(R.string.snackbar_pbCoetc);
+                    loginModel.setValue(login);
+                    e.printStackTrace();
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-
+            else {
+                login.setError(R.string.snackbar_pbCoetc);
+                loginModel.setValue(login);
+            }
         }
     }
 }

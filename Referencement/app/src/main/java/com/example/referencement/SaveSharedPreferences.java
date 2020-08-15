@@ -6,7 +6,8 @@ import android.preference.PreferenceManager;
 
 public class SaveSharedPreferences {
 
-    static final String PREF_USERNAME_ID = "username+id";
+    static final String ID = "id";
+    static final String USERNAME = "username";
 
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -17,9 +18,10 @@ public class SaveSharedPreferences {
      * @param ctx
      * @param userName
      */
-    public static void setUserName(Context ctx, String userName) {
+    public static void setUserName(Context ctx, String id, String userName) {
         SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
-        editor.putString(PREF_USERNAME_ID, userName);
+        editor.putString(ID, id);
+        editor.putString(USERNAME, userName);
         editor.commit();
     }
 
@@ -29,7 +31,10 @@ public class SaveSharedPreferences {
      * @return PREF_USERNAME_ID (sous la forme id-prenom)
      */
     public static String getUserName(Context ctx) {
-        return getSharedPreferences(ctx).getString(PREF_USERNAME_ID, "");
+        return getSharedPreferences(ctx).getString(USERNAME, "");
+    }
+    public static String getId(Context ctx) {
+        return getSharedPreferences(ctx).getString(ID, "");
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.example.referencement.Fragments;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -19,14 +20,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 
 import com.example.referencement.R;
-import com.example.referencement.SaveSharedPreferences;
 import com.example.referencement.models.LoginModel;
 import com.example.referencement.viewmodels.LoginViewModel;
 
@@ -46,9 +46,6 @@ public class LoginFragment extends Fragment {
     private TextView inscriptionTextView;
 
     private LoginViewModel loginViewModel;
-    private SavedStateHandle savedStateHandle;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,34 +58,18 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        savedStateHandle = Navigation.findNavController(view)
-                .getPreviousBackStackEntry()
-                .getSavedStateHandle();
-        savedStateHandle.set(LOGIN_SUCCESSFUL, false);
 
-        ///if user connected
-        System.out.println(SaveSharedPreferences.getUserName(getContext()));
-        System.out.println(SaveSharedPreferences.getUserName(getContext()).length());
-        if(SaveSharedPreferences.getUserName(getContext()).length() != 0) {
-            savedStateHandle.set(LOGIN_SUCCESSFUL, true);
-            NavHostFragment.findNavController(this).popBackStack();
-            Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.login_to_bac);
-        }
+        loginViewModel = ViewModelProviders.of(getActivity()).get(LoginViewModel.class);
+        loginViewModel.init();
 
-        ///if user not connected
-        else {
-            // affiche la page de login
-            System.out.println("on affiche login");
-            loginViewModel = ViewModelProviders.of(getActivity()).get(LoginViewModel.class);
-            loginViewModel.init();
+        // initialise les editText, le bouton et la progressbar
+        usernameEditText = getActivity().findViewById(R.id.username);
+        passwordEditText = getActivity().findViewById(R.id.password);
+        loginButton = getActivity().findViewById(R.id.login);
+        loadingProgressBar = getActivity().findViewById(R.id.loading);
+        inscriptionTextView = getActivity().findViewById(R.id.textView_inscription);
 
-            loginViewModel.logout();
-            // initialise les editText, le bouton et la progressbar
-            usernameEditText = getActivity().findViewById(R.id.username);
-            passwordEditText = getActivity().findViewById(R.id.password);
-            loginButton = getActivity().findViewById(R.id.login);
-            loadingProgressBar = getActivity().findViewById(R.id.loading);
-            inscriptionTextView = getActivity().findViewById(R.id.textView_inscription);
+        final NavController navController = Navigation.findNavController(view);
 
             // on désactive le bouton pr se connecter
             loginButton.setEnabled(false);
@@ -120,21 +101,21 @@ public class LoginFragment extends Fragment {
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                    loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString(),false);
                 }
             });
 
             loginViewModel.getLoginResult().observe(getViewLifecycleOwner(), (Observer<LoginModel>) loginModel -> {
                 if(loginModel != null) {
                     if(loginModel.isAuthenticated()) {
-                        SaveSharedPreferences.setUserName(getContext(), loginModel.getDisplayName());
-                        savedStateHandle.set(LOGIN_SUCCESSFUL, true);
-                        NavHostFragment.findNavController(this).navigate(R.id.nav_bac);
+                        System.out.println("going to bac");
+                        navController.navigate(R.id.login_to_bac);
                     }
-                    else {
+
+                    else if(loginViewModel.getError() != 0){
                         usernameEditText.setText("");
                         passwordEditText.setText("");
-                        Toast.makeText(getContext(), loginViewModel.getError(), Toast.LENGTH_LONG).show();
+                         Toast.makeText(getContext(), loginViewModel.getError(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -142,11 +123,9 @@ public class LoginFragment extends Fragment {
             inscriptionTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.login_to_incription);
+                    navController.navigate(R.id.login_to_incription);
                 }
             });
-
-        }
     }
 
     // A placeholder username validation check

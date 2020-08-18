@@ -11,7 +11,7 @@ import com.example.referencement.HttpHandler.HttpManager;
 import com.example.referencement.HttpHandler.RequestPackage;
 
 import com.example.referencement.Fragments.InscriptionFragment;
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.models.LoginModel;
 
 
@@ -30,7 +30,6 @@ public class LoginRepository {
 
     // If user credentials will be cached in local storage, it is recommended it be encrypted
     // @see https://developer.android.com/training/articles/keystore
-    private InscriptionFragment.LoggedInUser user = null;
 
 
     public static LoginRepository getInstance() {

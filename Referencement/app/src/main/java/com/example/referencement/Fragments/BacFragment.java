@@ -1,30 +1,24 @@
 package com.example.referencement.Fragments;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.SaveSharedPreferences;
 import com.example.referencement.models.LoginModel;
 import com.example.referencement.viewmodels.LoginViewModel;
 
 public class BacFragment extends Fragment {
-
-    //private BacConseilSharedViewModel bacConseilSharedViewModel;
 
     private String idCompte;
     private String prenom;
@@ -41,17 +35,7 @@ public class BacFragment extends Fragment {
     private pl.pawelkleczkowski.customgauge.CustomGauge jaugeHumidite;
     private pl.pawelkleczkowski.customgauge.CustomGauge jaugePH;
 
-
-    // TODO : refaire le bac avec fragment viewmodel model et repository
-    // -> vue avec jauges, check authentication
-    // interface avec loginmodel pour recup toutes les autres données utiles
-    // prévoir les models pr stocker les données à afficher
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -99,24 +83,27 @@ public class BacFragment extends Fragment {
             ///on save les ids
             SaveSharedPreferences.setUserName(getContext(), loginModel.getUserId(), loginModel.getDisplayName());
             System.out.println("on affiche le bac");
-            //TODO : -connexion bluetooth
-            // -recuperer valeurs capteurs
 
-            if (loginModel.getHumidite() != 0 && loginModel.getTemperature() != 0 && loginModel.getPh() != 0) {
-                // affiche les notes dans les textViews prevus
-                textViewValTemp.setText(loginModel.getTemperature() + "/5");
-                textViewValHum.setText(loginModel.getHumidite() + "/5");
-                textViewValPh.setText(loginModel.getPh() + "/5");
-                // jauges -> on arrondi et cast en int pour temp et hum + on fait x10 pour avoir les decimales en ph
-                jaugeTemperature.setValue((int) Math.round(loginModel.getTemperature()));
-                jaugeHumidite.setValue((int) Math.round(loginModel.getHumidite()));
-                jaugePH.setValue((int) (loginModel.getPh() * 10));
-            } else {
-                // affiche messages d'erreur dans les textViews
-                textViewValHum.setText(R.string.erreur_bac);
-                textViewValTemp.setText(R.string.erreur_bac);
-                textViewValPh.setText(R.string.erreur_bac);
-            }
+                //Bluetooth supported
+                //TODO : -connexion bluetooth
+                // -recuperer valeurs capteurs
+
+
+                if (loginModel.getHumidite() != 0 && loginModel.getTemperature() != 0 && loginModel.getPh() != 0) {
+                    // affiche les notes dans les textViews prevus
+                    textViewValTemp.setText(loginModel.getTemperature() + "/5");
+                    textViewValHum.setText(loginModel.getHumidite() + "/5");
+                    textViewValPh.setText(loginModel.getPh() + "/5");
+                    // jauges -> on arrondi et cast en int pour temp et hum + on fait x10 pour avoir les decimales en ph
+                    jaugeTemperature.setValue((int) Math.round(loginModel.getTemperature()));
+                    jaugeHumidite.setValue((int) Math.round(loginModel.getHumidite()));
+                    jaugePH.setValue((int) (loginModel.getPh() * 10));
+                } else {
+                    // affiche messages d'erreur dans les textViews
+                    textViewValHum.setText(R.string.erreur_bac);
+                    textViewValTemp.setText(R.string.erreur_bac);
+                    textViewValPh.setText(R.string.erreur_bac);
+                }
         }
 
     }

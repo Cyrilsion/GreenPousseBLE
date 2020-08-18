@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.viewmodels.RechercheViewModel;
 
 import androidx.fragment.app.Fragment;

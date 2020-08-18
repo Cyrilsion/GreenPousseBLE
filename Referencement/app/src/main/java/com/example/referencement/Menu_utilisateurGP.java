@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.R;
 import com.example.referencement.models.LoginModel;
 import com.example.referencement.viewmodels.LoginViewModel;
 import com.google.android.material.navigation.NavigationView;
@@ -43,8 +44,6 @@ public class Menu_utilisateurGP extends AppCompatActivity { //implements Navigat
          */
 
         //TODO : -Onglet conseils + API pr récup
-        // -Onglet Mon compte
-        // -Onglet Blog
         // -Onglet aide
         // -Onglet contact
         // -Checker sécurité
@@ -54,7 +53,7 @@ public class Menu_utilisateurGP extends AppCompatActivity { //implements Navigat
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_recherche, R.id.nav_bac, R.id.nav_compte, R.id.nav_conseil,
+                R.id.nav_recherche, R.id.nav_bac, R.id.nav_moncompte, R.id.nav_conseil,
                 R.id.nav_blog, R.id.nav_aide, R.id.nav_contact)
                 .setDrawerLayout(drawer)
                 .build();

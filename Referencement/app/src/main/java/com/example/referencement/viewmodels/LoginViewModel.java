@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.referencement.R;
 import com.example.referencement.models.LoginModel;
 import com.example.referencement.repositories.LoginRepository;
 

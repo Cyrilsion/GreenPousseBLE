@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Confirmez nous votre mot de passe !"
+            android:id="@+id/confirm_text"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="50dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/confirm_edit"
+            android:inputType="text"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="50dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Confirmer"
+            android:id="@+id/confirm_button"
+            android:layout_below="@+id/confirm_edit"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="30dp"/>
+
+
+</RelativeLayout>

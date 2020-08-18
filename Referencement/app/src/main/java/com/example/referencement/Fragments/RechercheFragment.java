@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.referencement.models.Dechet;
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.viewmodels.RechercheViewModel;
 import com.example.referencement.adapters.ListAdapter;
 

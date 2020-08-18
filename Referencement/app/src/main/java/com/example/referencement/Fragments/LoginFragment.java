@@ -26,7 +26,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.models.LoginModel;
 import com.example.referencement.viewmodels.LoginViewModel;
 

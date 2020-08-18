@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.referencement.R;
+import com.example.R;
 import com.example.referencement.viewmodels.RechercheViewModel;
 
 import androidx.activity.OnBackPressedCallback;

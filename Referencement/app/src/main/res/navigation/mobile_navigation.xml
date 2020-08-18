@@ -73,6 +73,30 @@
             app:destination="@+id/nav_recherche" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_moncompte"
+        android:name="com.example.referencement.Fragments.MonCompteFragment"
+        android:label="Mon compte"
+        tools:layout="@layout/fragment_moncompte" >
+        <action
+            android:id="@+id/confirm"
+            app:destination="@+id/nav_confirmcompte"/>
+    </fragment>
 
+    <fragment
+        android:id="@+id/nav_confirmcompte"
+        android:name="com.example.referencement.Fragments.ModifCompteConfirmFragment"
+        android:label="Modifier mon compte"
+        tools:layout="@layout/fragment_moncompteconfirm" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="com.example.referencement.Fragments.BlogFragment"
+        android:label="Le blog GreenPousse"
+        tools:layout="@layout/fragment_blog">
+
+    </fragment>
 
 </navigation>

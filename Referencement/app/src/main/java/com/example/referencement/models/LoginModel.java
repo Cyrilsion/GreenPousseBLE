@@ -9,6 +9,7 @@ public class LoginModel {
     private Integer temperature;
     private Integer ph;
     private int error;
+    private String mailadresss;
 
     public LoginModel() {
         this.authentication = false;
@@ -27,6 +28,7 @@ public class LoginModel {
         this.displayName = displayName;
         this.authentication = true;
         this.error = 0;
+        this.mailadresss = "coucoudupond@plus";
     /// TODO : assigner les valeurs des capteurs
         this.humidite = 10;
         this.temperature = 20;
@@ -35,7 +37,7 @@ public class LoginModel {
     public void logout() {
         this.authentication = false;
     }
-
+    public String getMailadresss() { return this.mailadresss; }
     public int getHumidite() {
         return humidite;
     }
@@ -46,5 +48,6 @@ public class LoginModel {
         return this.temperature;
     }
     public int getError() { return this.error; }
+    public void setAdresseMail(String mail) { this.mailadresss = mail; }
     public void setError(int error) { this.error = error;}
 }

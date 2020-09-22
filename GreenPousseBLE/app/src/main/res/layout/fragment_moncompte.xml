@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="203dp"
+        android:layout_height="167dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/icon_utilisateur"
+        app:layout_anchorGravity="top|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="35dp"
+        android:layout_weight="1"
+        android:text="@string/textView_notif"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/switch_notif"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Switch
+        android:id="@+id/switch_notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="35dp"
+        android:layout_weight="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toEndOf="@+id/textView_notif"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/moncompte_changerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="32dp"
+        android:text="@string/textView_changerEmail"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_notif"
+        app:layout_constraintTop_toBottomOf="@+id/textView_notif" />
+
+    <TextView
+        android:id="@+id/moncompte_changerMdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="32dp"
+        android:text="@string/textView_changerMdp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/moncompte_changerEmail"
+        app:layout_constraintTop_toBottomOf="@+id/moncompte_changerEmail" />
+    <TextView
+        android:id="@+id/moncompte_changerBac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="32dp"
+        android:text="Connecter votre bac"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/moncompte_changerMdp"
+        app:layout_constraintTop_toBottomOf="@+id/moncompte_changerMdp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

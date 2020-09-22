@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_recherche">
+
+    <fragment
+        android:id="@+id/nav_bac"
+        android:name="com.example.greenpousse.Fragments.BacFragment"
+        android:label="@string/menu_bac"
+        tools:layout="@layout/fragment_bac">
+        <action
+            android:id="@+id/bac_to_login"
+            app:destination="@+id/nav_login"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/bac_to_conseils"
+            app:destination="@+id/nav_conseil" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.greenpousse.Fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/login_to_bac"
+            app:destination="@+id/nav_bac"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/login_to_recherche"
+            app:destination="@+id/nav_recherche"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/login_to_incription"
+            app:destination="@+id/nav_inscription"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inscription"
+        android:name="com.example.greenpousse.Fragments.InscriptionFragment"
+        android:label="Inscription"
+        tools:layout="@layout/fragment_inscription">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_recherche"
+        android:name="com.example.greenpousse.Fragments.RechercheFragment"
+        android:label="Recherche"
+        tools:layout="@layout/fragment_recherche">
+        <action
+            android:id="@+id/rech_to_details"
+            app:destination="@+id/nav_details"/>
+        <action
+            android:id="@+id/recherche_to_login"
+            app:destination="@+id/nav_login"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.example.greenpousse.Fragments.DetailsFragment"
+        android:label="Détails"
+        tools:layout="@layout/fragment_details" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_conseil"
+        android:name="com.example.greenpousse.Fragments.ConseilsFragment"
+        android:label="Conseils"
+        tools:layout="@layout/fragment_conseils" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_suggestion"
+        android:name="com.example.greenpousse.Fragments.SuggestionFragment"
+        android:label="Suggestion"
+        tools:layout="@layout/fragment_suggestion" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_moncompte"
+        android:name="com.example.greenpousse.Fragments.MonCompteFragment"
+        android:label="Mon compte"
+        tools:layout="@layout/fragment_moncompte" >
+        <action
+            android:id="@+id/confirm"
+            app:destination="@+id/nav_confirmcompte"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_confirmcompte"
+        android:name="com.example.greenpousse.Fragments.ModifCompteConfirmFragment"
+        android:label="Modifier mon compte"
+        tools:layout="@layout/fragment_moncompteconfirm" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="com.example.greenpousse.Fragments.BlogFragment"
+        android:label="Le blog GreenPousse"
+        tools:layout="@layout/fragment_blog">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_contact"
+        android:name="com.example.greenpousse.Fragments.SuggestionFragment"
+        android:label="Contact"
+        tools:layout="@layout/fragment_suggestion">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_aide"
+        android:name="com.example.greenpousse.Fragments.AideFragment"
+        android:label="Aide"
+        tools:layout="@layout/fragment_aide">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_devicescan"
+        android:name="com.example.greenpousse.bluetooth.DeviceScanFragment"
+        android:label="Recherche de votre lombricomposteur"
+        tools:layout="@layout/fragment_devicescan">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_device_selected"
+        android:name="com.example.greenpousse.bluetooth.DeviceControlFragment"
+        android:label="Connexion..."
+        tools:layout="@layout/fragment_device_selected">
+        <action
+            android:id="@+id/device_selected_to_bac"
+            app:destination="@+id/nav_bac"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+</navigation>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+                <ProgressBar
+                    android:id="@+id/progressBarSuggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+                <TextView
+                    android:id="@+id/infosSuggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vous pouvez nous envoyer ici une suggestion et nous la traiterons avec attention."
+                    android:textSize="18dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginTop="30dp"/>
+
+                <EditText
+                    android:id="@+id/mailSuggestion"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:hint="Adresse mail"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/infosSuggestion"
+                    android:layout_toLeftOf="@+id/checkMail"
+                    android:layout_alignParentLeft="true"/>
+                <ImageView
+                    android:id="@+id/checkMail"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:layout_below="@+id/infosSuggestion"
+                    android:layout_alignParentRight="true"/>
+
+                <EditText
+                    android:id="@+id/objetSuggestion"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Objet"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/mailSuggestion"
+                    android:layout_toLeftOf="@+id/checkObjet"
+                    android:layout_alignParentLeft="true"/>
+                <ImageView
+                    android:id="@+id/checkObjet"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:layout_below="@+id/mailSuggestion"
+                    android:layout_alignParentRight="true"/>
+                <EditText
+                    android:id="@+id/messageSuggestion"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:padding="5dp"
+                    android:ems="10"
+                    android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                    android:hint="Votre message (facultatif)"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_below="@+id/objetSuggestion"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:background="@drawable/normalbackground"/>
+                <Button
+                    android:id="@+id/sendMail"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:padding="5dp"
+                    android:layout_below="@+id/messageSuggestion"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/normalbackground"
+                    android:text="Envoyer"
+                    android:textSize="18dp"/>
+</RelativeLayout>
